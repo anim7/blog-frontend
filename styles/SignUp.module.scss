@@ -1,0 +1,72 @@
+@import "mixins";
+@import "variables";
+
+.signUpContainer {
+  @include flexContainer(center, center, column);
+  margin: 2rem 0;
+
+  p {
+    font-size: 1.2rem;
+  }
+
+  .signUpForm {
+    margin-top: 1rem;
+    margin-bottom: 5rem;
+    @include flexContainer(center, flex-start, column);
+    .inputBox {
+      margin-top: 0.2rem;
+      font-size: 1.2rem;
+      padding: 0.2rem;
+      border-radius: 0.5rem;
+      background-color: rgb(161, 161, 161);
+      border: none;
+      &:focus {
+        outline: none;
+        background-color: rgb(184, 184, 184);
+      }
+    }
+    span {
+      margin-top: 1rem;
+      font-weight: bold;
+      font-size: 0.8rem;
+    }
+    label {
+      color: red;
+      font-size: 0.8rem;
+      display: none;
+    }
+    .btnSubmit {
+      color: white;
+      margin-top: 1rem;
+      border: none;
+      font-size: 1.2rem;
+      width: 100%;
+      border-radius: 0.5rem;
+      padding: 0.3rem;
+      cursor: pointer;
+      background-color: #007bff;
+      &:hover {
+        background-color: #005dc0;
+      }
+      &:disabled {
+        background-color: rgb(107, 107, 107);
+      }
+    }
+    .loginLink {
+      @include flexContainer(space-between, center, row);
+      width: 100%;
+      .line {
+        width: 40%;
+        height: 0.05rem;
+        background-color: black;
+        margin-bottom: 1rem;
+      }
+      a {
+        font-size: 0.8rem;
+        &:hover {
+          color: rgb(0, 68, 196);
+        }
+      }
+    }
+  }
+}

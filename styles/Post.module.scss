@@ -1,0 +1,25 @@
+@import "mixins";
+@import "variables";
+
+.postContainer {
+  width: 50rem;
+  margin: 1rem auto;
+  .title {
+    text-align: center;
+    font-size: 3.2rem;
+    margin: 2rem 0;
+  }
+  .content {
+    font-size: 1.4rem;
+    margin: 2rem 0;
+  }
+}
+
+@media only screen and (max-width: 830px) {
+  .postContainer {
+    width: 95%;
+    .title {
+      font-size: 2.5rem;
+    }
+  }
+}

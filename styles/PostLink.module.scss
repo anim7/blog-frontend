@@ -1,0 +1,79 @@
+@import "mixins";
+@import "variables";
+
+.postLinkContainer {
+  @include flexContainer(flex-start, center, column);
+  width: 22rem;
+  height: 27rem;
+  border: 0.05rem solid black;
+  margin-bottom: 2rem;
+  border-radius: 0.5rem;
+  padding: 0;
+  .img {
+    height: 13rem;
+    // height: 13.51rem;
+    width: 100.25%;
+    background-color: rgb(4, 3, 27);
+    position: relative;
+    border-top-left-radius: 0.35rem;
+    border-top-right-radius: 0.35rem;
+  }
+  .desc {
+    padding: 0.3rem;
+    @include flexContainer(space-between, center, column);
+    height: 14rem;
+    * {
+      text-align: center;
+    }
+    h3 {
+      font-size: 1.7rem;
+    }
+    .info {
+      align-self: flex-start;
+      margin-left: 0.3rem;
+      margin-bottom: 0.3rem;
+      @include flexContainer(flex-start, flex-end, row);
+      width: 80%;
+      font-size: 0.8rem;
+      color: gray;
+      #authorAndDate {
+        margin-right: 1rem;
+        #author {
+          text-align: start;
+          color: black;
+          font-weight: bold;
+        }
+      }
+      .circle {
+        align-self: center;
+        position: relative;
+        top: 0.7rem;
+        right: 0.4rem;
+        height: 0.3rem;
+        width: 0.3rem;
+        border-radius: 0.3rem;
+        background-color: rgb(163, 163, 163);
+      }
+      .pfp {
+        margin-right: 0.3rem;
+        @include flexContainer(center, flex-end, row);
+        position: relative;
+        top: 0.1rem;
+        * {
+          border-radius: 1.3rem;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 730px) {
+  .postLinkContainer {
+    margin: 0 1rem;
+    margin-bottom: 1rem;
+    height: fit-content;
+    * {
+      height: fit-content;
+    }
+  }
+}

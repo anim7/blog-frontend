@@ -1,0 +1,116 @@
+@import "variables";
+@import "mixins";
+
+.contactContainer {
+  @include flexContainer(space-between, center, row);
+  width: 64rem;
+  margin: 2rem auto;
+  margin-bottom: 2rem;
+  .msg {
+    @include flexContainer(center, center, column);
+    width: 20rem;
+    p {
+      font-size: 1.1rem;
+      text-align: center;
+    }
+    h3 {
+      text-align: center;
+      font-size: 1.4rem;
+    }
+  }
+  .contactForm {
+    @include flexContainer(center, flex-start, column);
+    * {
+      font-size: 1rem;
+    }
+    span {
+      font-weight: bold;
+    }
+    textarea {
+      margin-bottom: 1rem;
+      margin-top: 0.2rem;
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      background-color: rgb(158, 158, 158);
+      &:focus {
+        outline: none;
+        background-color: darkgray;
+      }
+    }
+    #subject {
+      resize: none;
+    }
+    #body {
+      resize: vertical;
+    }
+    .submit {
+      width: 100%;
+      padding: 0.2rem 0;
+      border-radius: 0.4rem;
+      font-size: 1.5rem;
+      border: none;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+      &:hover {
+        background-color: #0060c7;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1222px) {
+  .contactContainer {
+    width: fit-content;
+    margin: 2rem auto;
+    margin-bottom: 2rem;
+    .msg {
+      margin-left: 1rem;
+    }
+    .contactForm {
+      margin: 0 1rem;
+      * {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// @media only screen and (max-width: 1060px) {
+//   .contactContainer {
+//     width: fit-content;
+//     margin: 2rem auto;
+//     margin-bottom: 2rem;
+//     .contactForm {
+//       margin-left: 1rem;
+//       * {
+//         width: 100%;
+//       }
+//     }
+//   }
+// }
+
+@media only screen and (max-width: 900px) {
+  .contactContainer {
+    @include flexContainer(center, center, column);
+    width: fit-content;
+    margin: 2rem auto;
+    .msg {
+      width: 90%;
+    }
+    .contactForm {
+      margin: 0 auto;
+      margin-top: 1rem;
+      @include flexContainer(center, center, column);
+      * {
+        width: 90%;
+      }
+      .submit {
+        width: 90%;
+      }
+    }
+    margin-bottom: 2rem;
+  }
+}

@@ -1,0 +1,141 @@
+@import "mixins.scss";
+
+.navContainer {
+  @include flexContainer(space-between, center, row);
+  height: 3rem;
+  background-color: rgb(32, 31, 48);
+  position: sticky;
+  top: 0;
+  * {
+    color: white;
+  }
+  z-index: 10;
+  .expandBtn {
+    background-color: rgb(32, 31, 48);
+    position: absolute;
+    top: 0.7rem;
+    left: 0.5rem;
+    border: none;
+    height: 1.3rem;
+    margin-left: 0.5rem;
+    @include flexContainer(space-between, center, column);
+    width: 1.55rem;
+    cursor: pointer;
+    .expandBtnLine {
+      width: 100%;
+      height: 0.15rem;
+      background-color: white;
+      border-radius: 0.2rem;
+    }
+    display: none;
+  }
+  .leftContainer {
+    @include flexContainer(flex-start, center, row);
+    width: 65%;
+    height: 100%;
+    .logo {
+      font-size: 1.3rem;
+      font-weight: lighter;
+      margin-left: 1rem;
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    }
+    .links {
+      height: 100%;
+      @include flexContainer(center, center, row);
+      .link {
+        height: 100%;
+        @include flexContainer(center, center, row);
+        font-size: 1.2rem;
+        margin-left: 1rem;
+        list-style: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      .activeLink {
+        border-top: 0.1rem solid white;
+      }
+    }
+  }
+  .rightContainer {
+    height: 100%;
+    width: 35%;
+    @include flexContainer(flex-end, center, row);
+    .authBtns {
+      background-color: rgb(0, 145, 145);
+      margin-right: 1rem;
+      padding: 0.2rem 0.4rem;
+      border-radius: 0.7rem;
+      &:hover {
+        background-color: rgb(0, 105, 105);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .navContainer {
+    .expandBtn {
+      display: flex;
+    }
+    flex-direction: column;
+    transition: all 0.7s ease-out;
+    .leftContainer {
+      .logo {
+        position: absolute;
+        top: 0.25rem;
+        left: 33%;
+        margin: 0;
+      }
+      width: 100%;
+      flex-direction: column;
+      justify-content: center;
+      .links {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        margin-top: 2.5rem;
+        .link {
+          margin: 0;
+          width: 100%;
+          padding-top: 0.5rem;
+          a {
+            width: 100%;
+            p {
+              width: 100%;
+              text-align: center;
+            }
+          }
+          &:hover {
+            text-decoration: none;
+          }
+        }
+        .activeLink {
+          a {
+            p {
+              color: rgb(168, 168, 168);
+            }
+          }
+          border: none;
+        }
+      }
+      .active {
+        display: flex;
+      }
+    }
+    .rightContainer {
+      width: 100%;
+      justify-content: center;
+      .authBtns {
+        display: none;
+        margin: 0 0.5rem;
+      }
+      .active {
+        display: flex;
+      }
+    }
+  }
+  .activeContainer {
+    height: 10rem;
+  }
+}
