@@ -1,3 +1,5 @@
+import { Theme } from "../global/theme";
+
 export const handleLinkClick = (
   linkID: string,
   linkClass: string,
@@ -39,4 +41,23 @@ export const handleClick = (
       }
     }, 700);
   }
+};
+
+export const toggleTheme = (
+  theme: Theme,
+  setTheme: (theme: Theme) => void,
+  containers: HTMLElement[]
+) => {
+  let newTheme: Theme;
+  if (theme == "dark") {
+    newTheme = "light";
+    document.body.style.backgroundImage = `linear-gradient(to bottom right,rgb(213, 245, 255),rgb(233, 255, 233),rgb(255, 255, 232))`;
+  } else {
+    newTheme = "dark";
+    document.body.style.backgroundImage = 'url("space.jfif")';
+  }
+  containers.forEach((element) =>
+    element?.setAttribute("data-theme", newTheme)
+  );
+  setTheme(newTheme);
 };

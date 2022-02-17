@@ -1,29 +1,65 @@
 @import "mixins";
 @import "variables";
 
-#heading {
-  text-align: center;
-  margin-top: 1rem;
-  font-size: 1.7rem;
+.homeContainer {
+  --color: black;
+  --bg: white;
+  --selection-bg: black;
+  --selection-color: white;
+}
+
+.homeContainer[data-theme="dark"] {
+  --color: white;
+  --bg: rgb(9, 1, 32);
+  --selection-bg: white;
+  --selection-color: black;
 }
 
 .homeContainer {
-  @include flexContainer(space-between, center, row);
-  flex-wrap: wrap;
-  margin: 2rem auto;
-  margin-bottom: 2rem;
-  width: 70rem;
+  ::selection {
+    background-color: var(--selection-bg);
+    color: var(--selection-color);
+  }
+  * {
+    color: var(--color);
+    transition: background 500ms;
+    ::selection {
+      background-color: var(--selection-bg);
+      color: var(--selection-color);
+    }
+  }
+  a {
+    transition: background 250ms;
+    background-color: var(--bg);
+  }
+  #heading {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 1.7rem;
+  }
+
+  .dataContainer {
+    @include flexContainer(space-between, center, row);
+    flex-wrap: wrap;
+    margin: 2rem auto;
+    margin-bottom: 2rem;
+    width: 70rem;
+  }
 }
 
 @media only screen and (max-width: 1125px) {
   .homeContainer {
-    width: 45rem;
+    .dataContainer {
+      width: 45rem;
+    }
   }
 }
 
 @media only screen and (max-width: 730px) {
   .homeContainer {
-    width: 100%;
-    justify-content: center;
+    .dataContainer {
+      width: 100%;
+      justify-content: center;
+    }
   }
 }

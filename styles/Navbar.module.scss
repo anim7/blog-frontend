@@ -1,17 +1,29 @@
-@import "mixins.scss";
+@import "mixins";
+@import "variables";
+
+.navContainer {
+  --bg: rgb(32, 31, 48);
+  --color: white;
+}
+
+.navContainer[data-theme="dark"] {
+  --bg: rgb(5, 3, 36);
+}
 
 .navContainer {
   @include flexContainer(space-between, center, row);
   height: 3rem;
-  background-color: rgb(32, 31, 48);
+  // background-color: rgb(32, 31, 48);
+  background-color: var(--bg);
+  transition: background 500ms;
   position: sticky;
   top: 0;
   * {
-    color: white;
+    color: var(--color);
   }
   z-index: 10;
   .expandBtn {
-    background-color: rgb(32, 31, 48);
+    background-color: var(--bg);
     position: absolute;
     top: 0.7rem;
     left: 0.5rem;
@@ -24,7 +36,7 @@
     .expandBtnLine {
       width: 100%;
       height: 0.15rem;
-      background-color: white;
+      background-color: var(--color);
       border-radius: 0.2rem;
     }
     display: none;
@@ -53,7 +65,7 @@
         }
       }
       .activeLink {
-        border-top: 0.1rem solid white;
+        border-top: 0.1rem solid var(--color);
       }
     }
   }
@@ -61,15 +73,59 @@
     height: 100%;
     width: 35%;
     @include flexContainer(flex-end, center, row);
-    .authBtns {
-      background-color: rgb(0, 145, 145);
-      margin-right: 1rem;
-      padding: 0.2rem 0.4rem;
-      border-radius: 0.7rem;
-      &:hover {
-        background-color: rgb(0, 105, 105);
+
+    .toggle {
+      --size: 1.7rem;
+      position: absolute;
+      top: 0.6rem;
+      right: 0.5rem;
+      margin-right: 0.5rem;
+
+      appearance: none;
+      outline: none;
+      cursor: pointer;
+
+      width: var(--size);
+      height: var(--size);
+      box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
+      border-radius: 999px;
+      color: hsl(240, 100%, 95%);
+
+      transition: all 500ms;
+
+      z-index: 1;
+
+      &:checked {
+        --ray-size: calc(var(--size) * -0.4);
+        --offset-orthogonal: calc(var(--size) * 0.65);
+        --offset-diagonal: calc(var(--size) * 0.45);
+
+        transform: scale(0.75);
+        color: hsl(40, 100%, 50%);
+        box-shadow: inset 0 0 0 var(--size),
+          calc(var(--offset-orthogonal) * -1) 0 0 var(--ray-size),
+          var(--offset-orthogonal) 0 0 var(--ray-size),
+          0 calc(var(--offset-orthogonal) * -1) 0 var(--ray-size),
+          0 var(--offset-orthogonal) 0 var(--ray-size),
+          calc(var(--offset-diagonal) * -1) calc(var(--offset-diagonal) * -1) 0
+            var(--ray-size),
+          var(--offset-diagonal) var(--offset-diagonal) 0 var(--ray-size),
+          calc(var(--offset-diagonal) * -1) var(--offset-diagonal) 0
+            var(--ray-size),
+          var(--offset-diagonal) calc(var(--offset-diagonal) * -1) 0
+            var(--ray-size);
       }
     }
+
+    // .authBtns {
+    //   background-color: rgb(0, 145, 145);
+    //   margin-right: 1rem;
+    //   padding: 0.2rem 0.4rem;
+    //   border-radius: 0.7rem;
+    //   &:hover {
+    //     background-color: rgb(0, 105, 105);
+    //   }
+    // }
   }
 }
 
@@ -84,7 +140,7 @@
       .logo {
         position: absolute;
         top: 0.25rem;
-        left: 33%;
+        left: 50;
         margin: 0;
       }
       width: 100%;
@@ -126,16 +182,16 @@
     .rightContainer {
       width: 100%;
       justify-content: center;
-      .authBtns {
-        display: none;
-        margin: 0 0.5rem;
-      }
-      .active {
-        display: flex;
-      }
+      // .authBtns {
+      //   display: none;
+      //   margin: 0 0.5rem;
+      // }
+      // .active {
+      //   display: flex;
+      // }
     }
   }
   .activeContainer {
-    height: 10rem;
+    height: 8rem;
   }
 }

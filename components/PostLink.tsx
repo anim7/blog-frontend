@@ -31,7 +31,7 @@ export const PostLink: React.FunctionComponent<Props> = ({ post }) => {
   };
   return (
     <Link href={`/${post.slug}`}>
-      <a className={postLinkStyles.postLinkContainer}>
+      <a className={postLinkStyles.postLinkContainer} id="postLinkContainer">
         {post.titleImage && (
           <div className={postLinkStyles.img}>
             <Image

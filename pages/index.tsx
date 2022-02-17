@@ -2,13 +2,15 @@ import type { GetStaticProps, NextPage } from "next";
 import { Post } from "../global/post";
 import { getPosts } from "../utils/postutils";
 import { Home as HomeComponent } from "../components/Home";
+import { Theme } from "../global/theme";
 
 interface Props {
   data: Post[] | null;
+  theme: Theme;
 }
 
-const Home: NextPage<Props> = ({ data }) => {
-  return <HomeComponent data={data} />;
+const Home: NextPage<Props> = ({ data, theme }) => {
+  return <HomeComponent data={data} theme={theme} />;
 };
 
 export default Home;

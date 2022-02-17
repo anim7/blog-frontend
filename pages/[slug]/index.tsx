@@ -3,18 +3,20 @@ import { ParsedUrlQuery } from "querystring";
 import React from "react";
 import { PostComponent } from "../../components/Post";
 import { Post } from "../../global/post";
+import { Theme } from "../../global/theme";
 import { getPost } from "../../utils/postutils";
 
 interface Props {
   post: Post | null;
+  theme: Theme;
 }
 
 interface IParams extends ParsedUrlQuery {
   slug: string;
 }
 
-const PostPage: NextPage<Props> = ({ post }) => {
-  return <PostComponent post={post} />;
+const PostPage: NextPage<Props> = ({ post, theme }) => {
+  return <PostComponent post={post} theme={theme} />;
 };
 
 export default PostPage;

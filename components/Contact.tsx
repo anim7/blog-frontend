@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Theme } from "../global/theme";
 import contactStyles from "../styles/Contact.module.scss";
+import { updateTheme } from "../utils/componentutils";
 import { handleClick } from "../utils/contactutils";
 
-export const Contact: React.FunctionComponent = () => {
+interface Props {
+  theme: Theme;
+}
+
+export const Contact: React.FunctionComponent<Props> = ({ theme }) => {
+  useEffect(() => {
+    updateTheme(theme, document.getElementById("contactContainer")!);
+  });
+
   return (
-    <div className={contactStyles.contactContainer}>
+    <div className={contactStyles.contactContainer} id="contactContainer">
       <div className={contactStyles.msg}>
         <h3>Feel free to drop your suggestions!</h3>
         <p>

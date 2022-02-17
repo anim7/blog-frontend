@@ -1,12 +1,18 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
+import { Theme } from "../global/theme";
 import navStyles from "../styles/Navbar.module.scss";
-import { handleLinkClick, handleClick } from "../utils/navutils";
+import { handleLinkClick, handleClick, toggleTheme } from "../utils/navutils";
 
 const { useEffect } = React;
 
-export const Navbar: React.FunctionComponent = () => {
+interface Props {
+  theme: Theme;
+  setTheme: (theme: Theme) => void;
+}
+
+export const Navbar: React.FunctionComponent<Props> = ({ theme, setTheme }) => {
   const router = useRouter();
 
   useEffect(() => {
@@ -25,7 +31,7 @@ export const Navbar: React.FunctionComponent = () => {
   }, [router.asPath]);
 
   return (
-    <nav className={navStyles.navContainer}>
+    <nav className={navStyles.navContainer} id="navContainer">
       <button
         className={navStyles.expandBtn}
         onClick={() => {
@@ -84,12 +90,22 @@ export const Navbar: React.FunctionComponent = () => {
         </ul>
       </div>
       <div className={navStyles.rightContainer}>
-        <Link href="/auth/signup">
-          <a className={navStyles.authBtns}>Sign Up</a>
-        </Link>
-        <Link href="/auth/signin">
-          <a className={navStyles.authBtns}>Sign In</a>
-        </Link>
+        <input
+          type="checkbox"
+          name="toggle"
+          id="toggle"
+          className={navStyles.toggle}
+          onClick={() => {
+            const containers = [
+              document.getElementById("navContainer")!,
+              document.getElementById("contactContainer")!,
+              document.getElementById("footerContainer")!,
+              document.getElementById("homeContainer")!,
+              document.getElementById("postContainer")!,
+            ];
+            toggleTheme(theme, setTheme, containers);
+          }}
+        />
       </div>
     </nav>
   );

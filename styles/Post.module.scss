@@ -2,6 +2,30 @@
 @import "variables";
 
 .postContainer {
+  --color: black;
+  --selection-bg: black;
+  --selection-color: white;
+}
+
+.postContainer[data-theme="dark"] {
+  --color: white;
+  --selection-bg: white;
+  --selection-color: black;
+}
+
+.postContainer {
+  * {
+    color: var(--color);
+    transition: color 250ms;
+    ::selection {
+      background-color: var(--selection-bg);
+      color: var(--selection-color);
+    }
+  }
+  ::selection {
+    background-color: var(--selection-bg);
+    color: var(--selection-color);
+  }
   width: 50rem;
   margin: 1rem auto;
   .title {

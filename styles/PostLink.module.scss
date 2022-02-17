@@ -5,14 +5,16 @@
   @include flexContainer(flex-start, center, column);
   width: 22rem;
   height: 27rem;
-  border: 0.05rem solid black;
+  // box-shadow: 0 4px 8px 0 rgba(192, 192, 192, 0.2),
+  //   0 6px 20px 0 rgba(189, 189, 189, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 2rem;
   border-radius: 0.5rem;
   padding: 0;
   .img {
     height: 13rem;
     // height: 13.51rem;
-    width: 100.25%;
+    width: 100%;
     background-color: rgb(4, 3, 27);
     position: relative;
     border-top-left-radius: 0.35rem;
@@ -40,14 +42,14 @@
         margin-right: 1rem;
         #author {
           text-align: start;
-          color: black;
+          color: var(--color);
           font-weight: bold;
         }
       }
       .circle {
         align-self: center;
         position: relative;
-        top: 0.7rem;
+        top: 0.8rem;
         right: 0.4rem;
         height: 0.3rem;
         width: 0.3rem;
@@ -74,6 +76,18 @@
     height: fit-content;
     * {
       height: fit-content;
+    }
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .postLinkContainer {
+    height: 30rem;
+    .info {
+      .circle {
+        display: none;
+      }
+      flex-wrap: wrap;
     }
   }
 }

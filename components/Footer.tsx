@@ -5,10 +5,10 @@ import footerStyles from "../styles/Footer.module.scss";
 
 export const Footer: React.FunctionComponent = () => {
   return (
-    <footer className={footerStyles.footerContainer}>
+    <footer className={footerStyles.footerContainer} id="footerContainer">
       <div className={footerStyles.leftFooter}>
         {/* change this later */}
-        copyright message
+        <p>copyright message</p>
       </div>
       <div className={footerStyles.rightFooter}>
         <a
@@ -26,6 +26,7 @@ export const Footer: React.FunctionComponent = () => {
         </a>
         <a href="https://github.com/anim7" target="_blank" rel="noreferrer">
           <Image
+            id={footerStyles.github}
             src="/github.png"
             alt="Github"
             className={footerStyles.image}
